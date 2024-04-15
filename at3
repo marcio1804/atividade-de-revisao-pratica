@@ -1,0 +1,123 @@
+Main
+
+package br.unipar.main;
+
+import br.unipar.objeto.Produto;
+
+import java.util.Scanner;
+
+class main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bem-vindo ao sistema de gerenciamento de estoque!");
+
+        // Criação de um objeto Produto
+        Produto produto = null;
+
+        while (true) {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1. Adicionar um novo produto");
+            System.out.println("2. Atualizar preço ou quantidade de um produto");
+            System.out.println("3. Exibir detalhes de um produto específico");
+            System.out.println("4. Sair");
+
+            int opcao = scanner.nextInt();
+
+            if (opcao == 1) {
+                System.out.println("Digite o nome do produto:");
+                scanner.nextLine(); // Consumir a quebra de linha pendente
+                String nome = scanner.nextLine();
+                System.out.println("Digite o preço do produto:");
+                double preco = scanner.nextDouble();
+                System.out.println("Digite a quantidade em estoque do produto:");
+                int quantidade = scanner.nextInt();
+                produto = new Produto(nome, preco, quantidade);
+                System.out.println("Produto adicionado com sucesso!");
+            } else if (opcao == 2) {
+                if (produto == null) {
+                    System.out.println("Nenhum produto adicionado ainda. Por favor, adicione um produto primeiro.");
+                } else {
+                    System.out.println("Escolha o que deseja atualizar:");
+                    System.out.println("1. Preço");
+                    System.out.println("2. Quantidade em Estoque");
+                    int escolha = scanner.nextInt();
+                    if (escolha == 1) {
+                        System.out.println("Digite o novo preço:");
+                        double novoPreco = scanner.nextDouble();
+                        produto.setPreco(novoPreco);
+                        System.out.println("Preço atualizado com sucesso!");
+                    } else if (escolha == 2) {
+                        System.out.println("Digite a nova quantidade em estoque:");
+                        int novaQuantidade = scanner.nextInt();
+                        produto.setQuantidadeEmEstoque(novaQuantidade);
+                        System.out.println("Quantidade em estoque atualizada com sucesso!");
+                    } else {
+                        System.out.println("Opção inválida.");
+                    }
+                }
+            } else if (opcao == 3) {
+                if (produto == null) {
+                    System.out.println("Nenhum produto adicionado ainda. Por favor, adicione um produto primeiro.");
+                } else {
+                    produto.exibirDetalhes();
+                }
+            } else if (opcao == 4) {
+                System.out.println("Saindo...");
+                break;
+            } else {
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+PRODUTO
+
+
+package br.unipar.objeto;
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEmEstoque;
+
+    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidadeEmEstoque() {
+        return quantidadeEmEstoque;
+    }
+
+    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    // Método para exibir os detalhes do produto
+    public void exibirDetalhes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: " + preco);
+        System.out.println("Quantidade em Estoque: " + quantidadeEmEstoque);
+    }
+}
