@@ -1,0 +1,97 @@
+package br.unipar.objetos;
+
+public class Carro {
+
+    public Carro(String toyota, String corolla, int i, String prata) {
+    }
+
+    public void exibirInformacoes() {
+    }
+
+    public void setCor(String preto) {
+    }
+
+    public class Carro {
+        // Atributos privados
+        private String marca;
+        private String modelo;
+        private int ano;
+        private String cor;
+
+        // Construtor
+        public Carro(String marca, String modelo, int ano, String cor) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.ano = ano;
+            this.cor = cor;
+        }
+
+        // Métodos de acesso (getters)
+        public String getMarca() {
+            return marca;
+        }
+
+        public String getModelo() {
+            return modelo;
+        }
+
+        public int getAno() {
+            return ano;
+        }
+
+        public String getCor() {
+            return cor;
+        }
+
+        // Métodos de modificação (setters)
+        public void setMarca(String marca) {
+            this.marca = marca;
+        }
+
+        public void setModelo(String modelo) {
+            this.modelo = modelo;
+        }
+
+        public void setAno(int ano) {
+            this.ano = ano;
+        }
+
+        public void setCor(String cor) {
+            this.cor = cor;
+        }
+
+        // Método para exibir as informações do carro
+        public void exibirInformacoes() {
+            System.out.println("Marca: " + marca);
+            System.out.println("Modelo: " + modelo);
+            System.out.println("Ano: " + ano);
+            System.out.println("Cor: " + cor);
+        }
+    }
+}
+
+
+TESTE
+
+
+package br.unipar.main;
+import br.unipar.objetos.Carro;
+
+public class TesteCarro {
+    public static void main(String[] args) {
+        // Criando um objeto carro
+        Carro meuCarro = new Carro("Toyota", "Corolla", 2022, "Prata");
+
+        // Exibindo informações do carro
+        System.out.println("Informações do carro:");
+        meuCarro.exibirInformacoes();
+
+        // Modificando algumas informações do carro
+        meuCarro.setAno(2023);
+        meuCarro.setCor("Preto");
+
+        // Exibindo informações atualizadas do carro
+        System.out.println("Informações atualizadas do carro:");
+        meuCarro.exibirInformacoes();
+    }
+}
