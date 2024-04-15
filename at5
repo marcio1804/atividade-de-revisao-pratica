@@ -1,0 +1,126 @@
+PRODUTO
+
+package br.unipar.objeto;
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidadeEmEstoque;
+
+    // Construtor que aceita apenas o nome do produto e inicializa os demais atributos com valores padrão
+    public Produto(String nome) {
+        this.nome = nome;
+        this.preco = 0.0;
+        this.quantidadeEmEstoque = 0;
+    }
+
+    // Construtor que aceita o nome e o preço do produto, inicializando a quantidade em estoque com o valor padrão
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = 0;
+    }
+
+    // Construtor que aceita o nome, o preço e a quantidade em estoque do produto
+    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    // Métodos getters e setters
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public int getQuantidadeEmEstoque() {
+        return quantidadeEmEstoque;
+    }
+
+    public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+        this.quantidadeEmEstoque = quantidadeEmEstoque;
+    }
+
+    // Método para exibir as características do produto
+    public void exibirCaracteristicas() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Preço: " + preco);
+        System.out.println("Quantidade em Estoque: " + quantidadeEmEstoque);
+    }
+}
+
+
+MAIN
+
+package br.unipar.main;
+
+import br.unipar.objeto.Produto;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bem-vindo ao sistema de criação de produtos!");
+
+        while (true) {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1. Criar produto com nome");
+            System.out.println("2. Criar produto com nome e preço");
+            System.out.println("3. Criar produto com nome, preço e quantidade em estoque");
+            System.out.println("4. Sair");
+
+            int opcao = scanner.nextInt();
+
+            if (opcao == 1) {
+                System.out.println("Digite o nome do produto:");
+                scanner.nextLine(); // Consumir a quebra de linha pendente
+                String nome = scanner.nextLine();
+                Produto produto = new Produto(nome);
+                System.out.println("Produto criado com sucesso!");
+                produto.exibirCaracteristicas();
+            } else if (opcao == 2) {
+                System.out.println("Digite o nome do produto:");
+                scanner.nextLine(); // Consumir a quebra de linha pendente
+                String nome = scanner.nextLine();
+                System.out.println("Digite o preço do produto:");
+                double preco = scanner.nextDouble();
+                Produto produto = new Produto(nome, preco);
+                System.out.println("Produto criado com sucesso!");
+                produto.exibirCaracteristicas();
+            } else if (opcao == 3) {
+                System.out.println("Digite o nome do produto:");
+                scanner.nextLine(); // Consumir a quebra de linha pendente
+                String nome = scanner.nextLine();
+                System.out.println("Digite o preço do produto:");
+                double preco = scanner.nextDouble();
+                System.out.println("Digite a quantidade em estoque do produto:");
+                int quantidade = scanner.nextInt();
+                Produto produto = new Produto(nome, preco, quantidade);
+                System.out.println("Produto criado com sucesso!");
+                produto.exibirCaracteristicas();
+            } else if (opcao == 4) {
+                System.out.println("Saindo...");
+                break;
+            } else {
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            }
+        }
+
+        scanner.close();
+    }
+}
